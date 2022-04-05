@@ -2,11 +2,10 @@
 Inject parent window services (and other injectables) into child window Angular apps, allowing parent and child window apps to share data and behave as if they were a single app.
 ## Usage
 
-`ngx-parent-angular` is intended to be used in a multi-window Angular app, where the main and child windows are running separate Angular apps. For an overview on how to set up this kind of app, please see the [Demo App](https://github.com/foiled-plan/ngx-parent-injector).
+`ngx-parent-angular` is intended to be used in a multi-window Angular app, where the parent and child windows are running separate Angular apps. For an overview on how to set up this kind of app, please see the [Demo App](https://github.com/foiled-plan/ngx-parent-injector).
 
-1. Add `NgxParentInjectorModule` to the `imports` of the root Angular module of the main window.
-2. Add `NgxParentInjectorChildModule.forRoot(...)` to the `imports` of the root Angular modules of the child windows.
-3. Add the directive `[ngxParentInjectorChild]` to an element as close to the root of the child window's component tree as possible.
+1. Add `NgxParentInjectorModule` to the `imports` of the root Angular module of the parent window.
+2. Add `NgxParentInjectorChildModule.forRoot(...)` to the `imports` of the root Angular module of each child window.
 
 To inject a parent window's service in a child window:
 1. In the parent window, the service's injection token must be explicitly exposed to the child window by calling `exposeToken()`.
@@ -102,7 +101,7 @@ Injection tokens (like constructor functions for services) will have separate in
 
 ### Triggering change detection in both the parent and child windows at appropriate moments.
 
-By injecting services from a parent Angular app into a child Angular app, the apps become logically entangled. As a consequence, any change in the parent app may require a child app to update its view, and vice versa. This is achieved by injecting the parent app's `NgZone` service into the child app using the process described above. Every time the parent window's `NgZone`'s microtask queue empties, we manually trigger a change detection in the child window in order to update the child app's view in response to an event in the parent app. Conversely, whenever the microtask queue of the child app's own `NgZone` empties, we push an item to the parent app `NgZone`'s microtask queue to propagate events which originated in the child app to the main app (as well as to trigger change detection in other child apps).
+By injecting services from a parent Angular app into a child Angular app, the apps become logically entangled. As a consequence, any change in the parent app may require a child app to update its view, and vice versa. This is achieved by injecting the parent app's `NgZone` service into the child app using the process described above. Every time the parent window's `NgZone`'s microtask queue empties, we manually trigger a change detection in the child window in order to update the child app's view in response to an event in the parent app. Conversely, whenever the microtask queue of the child app's own `NgZone` empties, we push an item to the parent app `NgZone`'s microtask queue to propagate events which originated in the child app to the parent app (as well as to trigger change detection in other child apps).
 
 
 ## Build

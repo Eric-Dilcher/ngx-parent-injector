@@ -1,6 +1,6 @@
 {
   "name": "ngx-parent-injector",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "peerDependencies": {
     "@angular/common": ">=13.2.6",
     "@angular/core": ">=13.2.6",
@@ -17,6 +17,6 @@
     "url": "https://github.com/foiled-plan/ngx-parent-injector/issues"
   },
   "homepage": "https://github.com/foiled-plan/ngx-parent-injector/blob/main/projects/ngx-parent-injector",
-  "keywords": ["Angular", "injector", "child window"],
+  "keywords": ["Angular", "injector", "window", "child window", "parent window", "multi window"],
   "license": "MIT"
 }

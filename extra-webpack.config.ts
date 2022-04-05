@@ -33,7 +33,7 @@ export default (
   config.optimization.splitChunks.cacheGroups = {
     // @ts-ignore
     ...config.optimization.splitChunks.cacheGroups,
-    // force node modules to be shared between main and child windows.
+    // force node modules to be shared between parent and child windows.
     // This is needed to prevent including Angular framework in multiple chunks.
     vendor: {
       chunks: 'initial',

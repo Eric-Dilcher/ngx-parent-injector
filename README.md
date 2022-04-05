@@ -22,7 +22,7 @@ If, for any reason, you wish to continue with the local version of `ngx-parent-i
 Configuring your Angular build to generate multiple pages is not trivial. This demo app illustrates one way to achieve this. Below are the key components of the configuration:
 1. Use `@angular-builders/custom-webpack` to augment the underlying webpack config with a custom webpack config.
 2. In the custom webpack config (here called `extra-webpack-config.ts`):
-    * define a `vendor` chunk and add it to`optimization.splitChunks.cacheGroups` in order to prevent npm dependencies (like Angular itself) from being deplicated in every window-specific chunk.
+    * define a `vendor` chunk and add it to`optimization.splitChunks.cacheGroups` in order to prevent npm dependencies (like Angular itself) from being duplicated in every window-specific chunk.
     * for each child window, add an item to `entry` in order to generate a separate JS file for the child window.
     * for each child window, add a new instace of `HtmlWebpackPlugin` to `plugins` in order to generate a separate HTML file for the child window. Be sure to add the previous JS file to the `chunks` array.
 3. For each child window, add the path to the entry `ts` file to the `tsconfig.app.json`'s `"files"` array in order to include it in the TS compilation step.
