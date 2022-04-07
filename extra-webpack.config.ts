@@ -20,7 +20,7 @@ export default (
     new HtmlWebpackPlugin({
       template: './src/childWindow.html',
       filename: 'childWindow.html',
-      chunks: ['vendor', 'polyfills', 'childWindow'],
+      chunks: ['vendor', 'polyfills', 'styles', 'childWindow'],
       inject: "body",
       scriptLoading: "module"
     })

@@ -10,9 +10,9 @@ type ConstructorFunction = new (...args: any[]) => any;
 let WARNINGS_ENABLED = true;
 
 /**
- * Disable warning logs. Useful when running code in test environments, as this environment will always trigger warnings.
+ * Disable warning logs. Useful when running code in test environments, as this environment will usually trigger warnings.
  */
-export function suppressWarnings(): void {
+export function disableWarnings(): void {
   WARNINGS_ENABLED = false;
 }
 
@@ -21,7 +21,7 @@ export function getParentToken<T extends ConstructorFunction>(
 ): any {
   if (WARNINGS_ENABLED && window.opener === null) {
     console.warn(
-      '`getParentToken` needs access to `window.opener` to work in production. To suppress this message, call `suppressWarnings()`.'
+      '`getParentToken` needs access to `window.opener` to work in production. To suppress this message (e.g. during tests), call `disableWarnings()`.'
     );
   }
   const tokenName =
@@ -43,7 +43,7 @@ export function getParentToken<T extends ConstructorFunction>(
 export function getParentProviders(): FactoryProvider[] {
   if (!window.opener) {
     throw new Error(
-      'Cannot access parent window via `window.opener`. Did you set `testMode: true` in `NgxParentInjectorChildModule.forRoot(...)`?'
+      'Cannot access parent window via `window.opener`. If you are running tests, did you set `testMode: true` in `NgxParentInjectorChildModule.forRoot(...)`?'
     );
   }
   if (!window.opener?.ngxParentInjector?.injectionTokens) {

@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.0.1 - 2022-04-07
+
+- Fixed mistake in README, by telling users to call `disableWarnings()` instead of non-existant `suppressWarnings()` during tests.
+- Updated README, by removing from the usage example the `ngxParentInjectorChild` attribute, as it has been removed since version 3.
+
 ## 3.0.0 - 2022-04-05
 
 - Breaking change: Trigger change detection in the child app using `ApplicationRef.tick()` instead of `ChangeDetectorRef.detectChanges()`, meaning the usage of `[ngxParentInjectorChild]` directive is no longer needed, and as such has been removed.

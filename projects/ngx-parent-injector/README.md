@@ -66,7 +66,7 @@ import { SomeParentService } from '../parentWindow/someParentModule/someParent.s
 import { SOME_PARENT_TOKEN } from '../parentWindow/someParentModule/someParent.token';
 
 @Component({
-  template: '<div ngxParentInjectorChild>Child Window</div>'
+  template: '<div>Parent Token Value: {{ injectionTokenValue }}</div>'
 })
 export class ChildWindowComponent {
   public constructor(
@@ -84,7 +84,7 @@ Unit testing child window code which consumes any code from `ngx-parent-injector
 
 1. Set `testMode: true` in the options passed to `NgxParentInjectorChild.forRoot`. This can be achieved by adjusting `environment.ts` to include a flag indicating test mode, and setting that flag to `true` during test builds by using `fileReplacements` in `angular.json`'s test block.
 2. Since `getParentToken(token)` will simply return `token` unchanged if it can't find the corresponding token on the parent app, you can provide mocks for `token` as you normally would in the testing module.
-3. Call `suppressWarnings()` before runing tests to prevent warnings from polluting the test output.
+3. Call `disableWarnings()` before running tests to prevent warnings from polluting the test output.
 
 See the [Demo App](https://github.com/foiled-plan/ngx-parent-injector) for an example of unit tests.
 

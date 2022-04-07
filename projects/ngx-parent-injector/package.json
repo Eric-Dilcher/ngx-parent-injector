@@ -1,6 +1,6 @@
 {
   "name": "ngx-parent-injector",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "peerDependencies": {
     "@angular/common": ">=13.2.6",
     "@angular/core": ">=13.2.6",
